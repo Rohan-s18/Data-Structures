@@ -1,4 +1,4 @@
-package com.rohan.csds233.selfpractice.basics;
+package com.rohan.csds233.Classwork;
 
 import java.util.Collections;
 import java.util.ArrayList;
@@ -8,13 +8,11 @@ import java.util.Set;
 import javax.swing.*;
 import java.awt.*;
 
-public class Main {
+public class Aug31 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//System.out.println("Hello World");     //First code written in college
-		int[] arry = new int[10];
-		Linked_List_Practice_1 myTest = new Linked_List_Practice_1();
 		
 		//myTest.go();
 		
