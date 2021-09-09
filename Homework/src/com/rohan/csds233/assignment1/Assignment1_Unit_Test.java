@@ -1,6 +1,6 @@
 package com.rohan.csds233.assignment1;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class Assignment1_Unit_Test {
 	
@@ -47,11 +47,36 @@ public class Assignment1_Unit_Test {
 		System.out.println(myList.getCourseWithIndex(1).getCapacity());
 		
 		System.out.println(myList.searchCourseId("MATH233"));
-		System.out.println(myList.searchCourseName("Calc 3"));
+		System.out.println(myList.searchCourseName("Calc 4"));
 		myList.formattedPrint();
+		
+		System.out.println(foo(100));
 		
 	}
 	
+	/*
+	boolean foo(int[]a, int val) {
+		for(int i = 0; i < a.length; i++) {		//int i = 0 is a constant operation; i <= a.length & i++ are repeated operations
+			if(a[i] == -1) {					//One repeated operation
+				a[i] = val;
+				return true;
+			}
+		}
+		return false;							//One constant operation
+	}*/
+	
+	static int foo(int n) {
+		boolean[] isPrime = new boolean[n+1];
+		Arrays.fill(isPrime, true);
+		for(int i = 1; i <= n; i++)
+			for(int j = 2; j <= Math.sqrt(i); j++) 
+				if(i%j == 0)
+					isPrime[i] = false;
+		int sum = 0;
+		for(int k = 0; k <= n;k++) 
+			sum += isPrime[k] ? k:0;
+		return sum;
+	}
 	
 }
 

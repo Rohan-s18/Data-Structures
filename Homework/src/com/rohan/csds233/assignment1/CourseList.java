@@ -3,6 +3,19 @@ package com.rohan.csds233.assignment1;
 public class CourseList {
 	private Course[] listOfCourses = new Course[10];
 	
+	public CourseList(Course[] courseList) {				//Default Constructor
+		if(courseList.length < listOfCourses.length) {
+			int i = 0;
+			for(Course c : courseList) {
+				listOfCourses[i] = c;
+				i++;
+			}
+		}
+	}
+	
+	public CourseList() {				//Overloaded parameter-less constructor
+	}
+	
 	int size() {                                       
 		int size = 0;                                          
 		for(int i = 0; i < listOfCourses.length; i++) {
@@ -58,7 +71,7 @@ public class CourseList {
 	
 	int searchCourseName(String courseName) {
 		for(int i = 0; i < listOfCourses.length; i++) {
-			if(listOfCourses[i].getCourseName().equals(courseName)) {   //Comparing the course name of every course in the list to the argument   
+			if(listOfCourses[i] != null && listOfCourses[i].getCourseName().equals(courseName)) {   //Comparing the course name of every course in the list to the argument   
 				return i;                                               //Returning the index of the match
 			}
 		}
