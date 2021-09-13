@@ -5,6 +5,15 @@ public class Course {
 	private String courseName;
 	private int capacity;
 	
+	public Course() {								  //Parameter-less constructor
+	}
+	
+	public Course(String courseId, String courseName, int capacity) {	//Overloaded constructor with parameters
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.capacity = capacity;
+	}
+	
 	void setCourseID(String courseId) {               //Setter method for course ID
 		this.courseId = courseId;
 	}
