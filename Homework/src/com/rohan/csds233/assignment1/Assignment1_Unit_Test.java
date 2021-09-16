@@ -5,8 +5,15 @@ import java.util.Arrays;
 public class Assignment1_Unit_Test {
 	
 	public static void main(String[] args) {
-		CourseList myList = new CourseList();
-		Course crs1 = new Course();
+		Course[] arr = {new Course("CSDS132","Intro to Java",200),new Course("CSDS231","Data Structures",150),
+						new Course("CSDS281","Logic Design",150),new Course("CSDS302","Discrete Mathematics",200),
+						new Course("CSDS301","Artificial Intelligence",200),new Course("CSDS398","Software Engineering",200),
+						new Course("MATH121","Calc 1",500),new Course("MATH122","Calc 2",300),
+						new Course("MATH233","Calc 3",200)};
+		CourseList myList = new CourseList(arr);
+		myList.formattedPrint();
+		
+		/*Course crs1 = new Course();
 		crs1.setCapacity(50);
 		crs1.setCourseID("CSDS132");
 		crs1.setCourseName("Intro to Java");
@@ -50,7 +57,7 @@ public class Assignment1_Unit_Test {
 		System.out.println(myList.searchCourseName("Calc 4"));
 		myList.formattedPrint();
 		
-		System.out.println(foo(100));
+		System.out.println(foo(100));*/
 		
 	}
 	

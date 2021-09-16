@@ -1,14 +1,8 @@
 package com.rohan.csds233.Classwork;
 
-import java.util.ArrayList;
-import java.util.Stack;
-import java.util.Queue;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.Collection;
 
 public class Aug24 {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ObjectBag myBag = new ObjectBag();
@@ -98,18 +92,4 @@ class ObjectBag implements Bag{
 		}
 		System.out.println();
 	}
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

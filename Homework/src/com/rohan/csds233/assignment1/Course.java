@@ -14,27 +14,27 @@ public class Course {
 		this.capacity = capacity;
 	}
 	
-	void setCourseID(String courseId) {               //Setter method for course ID
+	public void setCourseID(String courseId) {               //Setter method for course ID
 		this.courseId = courseId;
 	}
 	
-	void setCourseName(String courseName) {           //Setter method for course name
+	public void setCourseName(String courseName) {           //Setter method for course name
 		this.courseName = courseName;
 	}
 	
-	void setCapacity(int capacity) {                  //Setter method for capacity
+	public void setCapacity(int capacity) {                  //Setter method for capacity
 		this.capacity = capacity;
 	}
 	
-	String getCourseID() {                            //Getter method for course ID
+	public String getCourseID() {                            //Getter method for course ID
 		return courseId;
 	}
 	
-	String getCourseName() {                          //Getter method for course name
+	public String getCourseName() {                          //Getter method for course name
 		return courseName;
 	}
 	
-	int getCapacity() {                               //Getter method for capacity
+	public int getCapacity() {                               //Getter method for capacity
 		return capacity;
 	}
 	

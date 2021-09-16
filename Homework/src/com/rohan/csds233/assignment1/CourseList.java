@@ -6,7 +6,7 @@ public class CourseList {
 	public CourseList(Course[] courseList) {				//Default Constructor
 		if(courseList.length < listOfCourses.length) {
 			int i = 0;
-			for(Course c : courseList) {
+			for(Course c : courseList) {					//Using an enhanced for-loop to store courses from array to the listOfCourses
 				listOfCourses[i] = c;
 				i++;
 			}
@@ -50,18 +50,26 @@ public class CourseList {
 			formattedPrint();
 			return false; 							//returning false if index is out of bounds
 		}
-		for(int j = i; j < size(); j++) {           //Shifting every element to the right of i-th element by one index to the left
+		if(listOfCourses[i] == null) {              //returning false if there is no course at index i
+			System.out.println("List after the operation:");
+			formattedPrint();
+			return false;
+		}
+		for(int j = i; j < listOfCourses.length - 1; j++) {           //Shifting every element to the right of i-th element by one index to the left
 			listOfCourses[j] = listOfCourses[j+1]; 
+		}
+		if(i == listOfCourses.length-1) {							  //In case the element is at the last position of the CourseList, that index will be set to null
+			listOfCourses[i] = null;
 		}
 		System.out.println("List after the operation:");
 		formattedPrint();
 		return true;
 	}
 	
-	boolean changeCapacity(String courseID, int capacity) {
+	public boolean changeCapacity(String courseID, int capacity) {
 		System.out.println("Operation: Change the capacity of course to " + String.valueOf(capacity));
 		for(int i = 0; i < listOfCourses.length; i++) {
-			if(listOfCourses[i].getCourseID().equals(courseID)) {       //Matching course ID
+			if(listOfCourses[i] != null && listOfCourses[i].getCourseID().equals(courseID)) {       //Matching course ID
 				System.out.println("Course: " + listOfCourses[i]);
 				System.out.println("List before operation:");
 				formattedPrint();
@@ -74,7 +82,7 @@ public class CourseList {
 		return false;                                                   //returning false if none of the course IDs match 
 	}
 	
-	Course getCourseWithIndex(int i) {
+	public Course getCourseWithIndex(int i) {
 		System.out.println("Operation: Retrieving course at index " + String.valueOf(i));
 		if(i < listOfCourses.length) {
 			return listOfCourses[i];                                    //returning i-th element (if it is within bounds)
@@ -82,7 +90,7 @@ public class CourseList {
 		return null;
 	}
 	
-	int searchCourseId(String courseID) {
+	public int searchCourseId(String courseID) {
 		System.out.println("Operation: Search for course with course id " + courseID);
 		for(int i = 0; i < listOfCourses.length; i++) {
 			if(listOfCourses[i] != null && listOfCourses[i].getCourseID().equals(courseID)) {  //Comparing the course ID of every course in the list to the argument (extra check is to prevent null pointer exception)
@@ -92,7 +100,7 @@ public class CourseList {
 		return -1;                                                 //Returning -1 if course ID doesn't match
 	}
 	
-	int searchCourseName(String courseName) {
+	public int searchCourseName(String courseName) {
 		System.out.println("Operation: Search for course with course name " + courseName);
 		for(int i = 0; i < listOfCourses.length; i++) {
 			if(listOfCourses[i] != null && listOfCourses[i].getCourseName().equals(courseName)) {   //Comparing the course name of every course in the list to the argument (extra check is to prevent null pointer exception) 
@@ -105,7 +113,7 @@ public class CourseList {
 	
 	//Additional formatted print method
 	
-	void formattedPrint() {
+	public void formattedPrint() {
 		for(int i = 0; i < listOfCourses.length; i++) {
 			if(listOfCourses[i] != null)                                //Checking if i-th element is null
 				System.out.println(String.valueOf(i) + ". " + listOfCourses[i]);    //formatting string (overridden Course object toString() method)
