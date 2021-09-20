@@ -31,10 +31,17 @@ public class CourseList {
 		System.out.println(course);
 		System.out.println("List before the operation:");
 		formattedPrint();
-		if(i < listOfCourses.length) {         //Adding Course to i-th index if it exists
+		if(i >= size() && i < listOfCourses.length) {
+			listOfCourses[size()] = course;  		//Adding course to the last
+		}
+		if(i > listOfCourses.length) {        		//handling index out of bounds exception
+			System.out.println("Operation Failed");
+		} 
+		if(listOfCourses[i] != null) {				//Shifting courses in case the index is not null
+			for(int j = size(); j > i-1; j--) {
+				listOfCourses[j+1] = listOfCourses[j];
+			}
 			listOfCourses[i] = course;
-		} else {
-			listOfCourses[listOfCourses.length - 1] = course;    //Adding course to the end if index is out of bounds
 		}
 		System.out.println("List after the operation:");
 		formattedPrint();		
