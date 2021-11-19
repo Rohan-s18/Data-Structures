@@ -1,7 +1,5 @@
 package com.rohan.homework.assignment4;
 
-import java.math.BigInteger;
-import java.util.*;
 
 public class HashTable {
 	private int tableSize;
@@ -63,6 +61,7 @@ public class HashTable {
 			}
 		}
 		trav.next = e;		//Adding entry to the end if it doesn't exist
+		numItems++;
 		checkLoadFactor();
 	}
 	
@@ -76,8 +75,7 @@ public class HashTable {
 	private void rehash() {
 		int oldSize = tableSize;
 		Entry[] oldTable = table;										//Creating an array for the old table
-		BigInteger b =  new BigInteger(String.valueOf(2 * oldSize));
-		tableSize = Integer.parseInt(b.nextProbablePrime().toString());		//Setting the new table size to the next prime of twice the old size
+		tableSize = 2*oldSize;		//Setting the new table size to twice the old size
 		table = new Entry[tableSize];									//Creating a new table
 		for(int i = 0; i < oldSize; i++) {	
 			if(oldTable[i] != null) {
