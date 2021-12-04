@@ -1,6 +1,5 @@
 package com.rohan.homework.assignment5;
 
-
 public class Sort {
 	private int depth;
 	private boolean sorted;
@@ -230,4 +229,3 @@ public class Sort {
 	}
 
 }
-
