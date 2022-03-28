@@ -43,9 +43,10 @@ public class Sorting {
 	}
 	
 	public static void insertionSort1(int[] arr) {
+		int j = 0;
+		int toInsert = 0;
 		for(int i = 1; i < arr.length; i++) {
-			int toInsert = arr[i];
-			int j = 0;
+			toInsert = arr[i];
 			for(j = i; j > 0 && toInsert < arr[j-1]; j--) {
 				arr[j] = arr[j-1];
 			}
