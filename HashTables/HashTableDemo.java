@@ -1,4 +1,3 @@
-package com.rohan.homework.assignment4;
 
 public class HashTableDemo {
 

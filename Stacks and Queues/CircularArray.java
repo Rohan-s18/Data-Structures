@@ -1,4 +1,3 @@
-package com.rohan.csds233.selfpractice.basics;
 
 public class CircularArray {
 	private int size;

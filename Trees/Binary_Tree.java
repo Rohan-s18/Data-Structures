@@ -1,4 +1,3 @@
-package com.rohan.csds233.trees;
 
 public class Binary_Tree {
 	private BinaryTreeNode root;

@@ -1,4 +1,3 @@
-package com.rohan.homework.assignment3;
 
 public class BinarySearchTree_Demo {
 	

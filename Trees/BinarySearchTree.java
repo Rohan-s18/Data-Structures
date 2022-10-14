@@ -1,4 +1,3 @@
-package com.rohan.homework.assignment3;
 
 public class BinarySearchTree <T> {
 	private int kThCount = 0;	//Making a count variable (will be used in kthSmallest

@@ -1,5 +1,3 @@
-package com.rohan.homework.assignment4;
-
 
 public class HashTable {
 	private int tableSize;
