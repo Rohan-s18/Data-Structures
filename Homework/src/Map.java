@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class Map {
 	//Instance variables
 	private Building[] buildings;		//Array for the buildings on the map
