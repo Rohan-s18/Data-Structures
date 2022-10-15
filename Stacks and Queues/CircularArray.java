@@ -1,24 +1,22 @@
 
 public class CircularArray {
 	private int size;
-	private Object[] arr;
+	private int[] arr;
 	private int head;
 	private int rear;
 	
 	public CircularArray() {
 		head = 0;
-		rear = -1;
-		arr = new Object[10];
+		rear = 0;
+		arr = new int[10];
+		size = 0;
 	}
 	
-	public boolean enque(Object e) {
+	public boolean enque(int x) {
 		if(isFull())
 			return false;
-		if(rear == arr.length-1)
-			rear = 0;
-		else
-			rear++;
-		arr[rear] = e;
+		arr[rear] = x;
+		rear = (rear+1)%arr.length;
 		size++;
 		return true;
 	}
@@ -26,12 +24,8 @@ public class CircularArray {
 	public Object deque() {
 		if(isEmpty())
 			return null;
-		Object temp = arr[head];
-		arr[head] = null;
-		if(head == arr.length)
-			head = 0;
-		else
-			head++;
+		int temp = arr[head];
+		head = (head+1)%arr.length;
 		size--;
 		return temp;
 	}
