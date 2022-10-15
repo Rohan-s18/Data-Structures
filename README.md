@@ -5,16 +5,36 @@ This repository holds source code for the implementation of most of the Data Str
 At the moment most of the source code is in Java, for source code in Python, please check the Python_Src folder.  
 
 These are some of the things that are inside this directory:  
-  - Arrays and ArrayLists
-  - LinkedLists
-  - Stacks and Queues
-  - Trees (Binary Search Trees)
+  - Arrays:
+    - This contains a single class that has a Array-based implementaion of a List. 
+  - LinkedList:
+    - This contains a single class for a singly-linked list with basic add/remove features as well as O(n) reverse.
+  - Stacks and Queues:
+    - Circular Array implementation of Queues
+    - LinkedList implementation of Queues
+    - Array implementation of Stacks
+    - Stack using Queue
+    - Queue using Stack
+    - Demo files for these classes
+  - Trees (Binary Search Trees):
+    - Binary Tree
+    - Binary Search Tree equipped with search, delete and insert.
   - Priority Queues and Heaps
-  - HashTables
-  - Sorting Algorithms
-  - Graphs
-  - Dijkstra's Algorithm
-  - Prim's Algorithm
+  - HashTables:
+    - Array based implementation of a HashTable.
+    - Additional wordCount method, to count the occurences of unique words.
+  - Sorting Algorithms:
+    - Selection Sort
+    - Insertion Sort
+    - Bubble Sort
+    - Shell Sort
+    - QuickSort
+    - MergeSort
+  - Graphs:
+    - Implementation of Graph ADt
+    - Dijkstra's Algorithm
+    - Prim's Algorithm
+    - Note: this is also implemented in Python
 
 For any discrepancy in the source code, please contact me at:  
 rohan.b.singh54@gmail.com  
