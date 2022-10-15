@@ -2,40 +2,50 @@
 import java.util.*;
 
 public class StackArray{
-	private Object[] myStack;
+
+	//Array to represent the stack
+	private int[] myStack;
 	private int top;
 	
 	public StackArray(int maxSize) {
-		myStack = new Object[maxSize];
-		top = -1;
+		myStack = new int[maxSize];
+		top = 0;
 	}
 	
 	public StackArray() {
-		myStack = new Object[10];
-		top = -1;
+		myStack = new int[10];
+		top = 0;
 	}
 	
-	public boolean push(Object e) {
+	//Push method to put the integer on the top of the stack
+	public boolean push(int x) {
+		//If the stack is not full
 		if(top < myStack.length - 1) {
+			//Setting the top element of the stack to x
+			myStack[top] = x;
+			//Increasing the index pointing to the top
 			top++;
-			myStack[top] = e;
 			return true;
 		}
 		
+		//Returning false if the stack is already full (could also throw an exception over here)
 		return false;		
 	}
 	
-	public Object pop() {
+	public int pop() {
 		if(isEmpty()) {
-			return null;
+			throw new Exception("The stack is empty!");
 		}
-		return myStack[top];
+
+		//Decreasing the value of the index of top
+		top--;
+
+		//Returning the top element
+		return myStack[top+1];
 	}
 	
 	public boolean isEmpty() {
-		if(top==-1)
-			return true;
-		return false;
+		return (top==0);
 	}
 	
 }
