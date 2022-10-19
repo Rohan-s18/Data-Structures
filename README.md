@@ -13,6 +13,7 @@ These are some of the things that are inside this directory:
     - Circular Array implementation of Queues
     - LinkedList implementation of Queues
     - Array implementation of Stacks
+    - LinkedList implementation of Stacks
     - Stack using Queue
     - Queue using Stack
     - Demo files for these classes
