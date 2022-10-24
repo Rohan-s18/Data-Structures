@@ -32,12 +32,12 @@ These are some of the things that are inside this directory:
     - QuickSort
     - MergeSort
   - Graphs:
-    - Implementation of Graph ADt
+    - Implementation of Graph ADT
     - Dijkstra's Algorithm
     - Prim's Algorithm
     - Note: this is also implemented in Python
 
-For any discrepancy in the source code, please contact me at:  
+For any suggestions, comments or queries, feel free to contact me at:  
 rohan.b.singh54@gmail.com  
 rxs1182@case.edu
 
