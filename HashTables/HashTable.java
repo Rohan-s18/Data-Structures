@@ -77,7 +77,14 @@ public class HashTable {
 		table = new Entry[tableSize];									//Creating a new table
 		for(int i = 0; i < oldSize; i++) {	
 			if(oldTable[i] != null) {
-				addHelper(oldTable[i]);									//Adding every element of the old table into the new table
+				//addHelper(oldTable[i]);									//Adding every element of the old table into the new table
+				Entry trav = oldTable[i];
+				while(trav != null){
+					for(int j = 0; j < trav.count; j++){
+						add(trav.word);
+					}
+					trav = trav.next;
+				}
 			}
 		}  
 	}
