@@ -23,7 +23,7 @@ These are some of the things that are inside this directory:
   - Priority Queues and Heaps
   - HashTables:
     - Array based implementation of a HashTable.
-    - Additional wordCount method, to count the occurences of unique words.
+    - Additional wordCount method, to count the occurences of unique words in a given sentence.
   - Sorting Algorithms:
     - Selection Sort
     - Insertion Sort
