@@ -64,6 +64,24 @@ public class UndirectedGraph{
 
     }
 
+    //Method to add multiple vertices/nodes to the graph
+    public boolean addVertices(List<String> names){
+        //Iterating through the list and adding the vertices
+        for(String s: names)
+            addVertex(s);
+
+        return true;
+    }
+
+    //Method to add multiple bi-directional edges between one source and multiple destinations
+    public boolean addEdges(String source, List<String> destinations){
+        //Iterating through the list of destinations
+        for(String s: destinations)
+            addEdge(source,s);
+
+        return true;
+    }
+
 
     //General Helper functions for the graph to make our life easier
 
