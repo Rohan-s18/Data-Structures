@@ -77,6 +77,40 @@ public class AdjacencyList {
 
 		return true;
 	}
+	
+	public boolean removeNode(String name) {
+		int index = indexOf(name);
+		if(index == -1)
+			return false;
+		
+		for(int i = index; i < size; i++) 
+			graph[i] = graph[i+1];
+		
+		size--;
+		
+		//Updating the destIndex of the edges
+		for(int i = 0; i < size; i++) {
+			ArrayList<Edge> myList = graph[i].edges;
+			int removeIndex = -1;
+			for(int j = 0; j < myList.size(); j++) {
+				
+				//If the destIndex was after the pivot index, then increasing the destIndex by 1
+				if(myList.get(j).destIndex > index)
+					myList.get(j).destIndex--;
+				
+				if(myList.get(j).destString.equals(name)) {
+					removeIndex = j;
+				}
+			}
+			if(removeIndex != -1)
+				myList.remove(removeIndex);
+			
+			graph[i].edges = myList;
+		}
+		
+		
+		return true;
+	}
 
 	public boolean addEdge(String from, String to) {
 		int fromIndex = indexOf(from);
