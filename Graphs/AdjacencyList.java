@@ -1,3 +1,5 @@
+//If you are looking for the code for Assignment 6, well then I guess you lucked out lol!
+
 import java.util.*;
 
 public class AdjacencyList {
@@ -135,6 +137,40 @@ public class AdjacencyList {
 		graph[toIndex].edges = toList;
 		graph[fromIndex].edges = fromList;
 		return true;
+	}
+	
+	public boolean removeEdge(String from, String to) {
+		int fromIndex = indexOf(from);
+		int toIndex = indexOf(to);
+
+		if(fromIndex == -1 || toIndex == -1 || toIndex == fromIndex)
+			return false;
+		
+		ArrayList<Edge> toList = graph[toIndex].edges;
+		ArrayList<Edge> fromList = graph[fromIndex].edges;
+		
+		//Checking if the edge already exists
+		boolean exists = false;
+		for(int i = 0; i < toList.size(); i++) {
+			if(toList.get(i).destIndex == fromIndex) {
+				toList.remove(i);
+				exists = true;
+			}
+				
+		}
+		
+		for(int i = 0; i < fromList.size(); i++) {
+			if(fromList.get(i).destIndex == toIndex) {
+				fromList.remove(i);
+				exists = true;
+			}
+				
+		}
+		
+		graph[toIndex].edges = toList;
+		graph[fromIndex].edges = fromList;
+		
+		return exists;
 	}
 	
 	public void printgraph() {
