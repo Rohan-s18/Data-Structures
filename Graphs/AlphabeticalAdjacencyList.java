@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-public class AdjacencyList {
+public class AlphabeticalAdjacencyList {
 	private Vertex[] graph;
 	private int size;
 
@@ -40,7 +40,7 @@ public class AdjacencyList {
 		}
 	}
 
-	public AdjacencyList() {
+	public AlphabeticalAdjacencyList() {
 		graph = new Vertex[10];
 		size = 0;
 	}
