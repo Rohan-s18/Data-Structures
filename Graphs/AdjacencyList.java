@@ -6,7 +6,7 @@ public class AdjacencyList {
 
 	class Vertex implements Comparable<Vertex>{	
 		String name;
-		List<Edge> edges;
+		ArrayList<Edge> edges;
 
 		Vertex(String name){
 			this.name = name;
@@ -18,7 +18,7 @@ public class AdjacencyList {
 			// -1 if it comes before alphabetically
 			// +1 if it comes after alphabetically
 			for(int i = 0; i < name.length() && i < o.name.length(); i++) {
-				if(name.charAt(i) < o.name.charAt(i))
+				if(name.toLowerCase().charAt(i) < o.name.toLowerCase().charAt(i))
 					return -1;
 				else if(name.charAt(i) > o.name.charAt(i))
 					return 1;
@@ -31,6 +31,11 @@ public class AdjacencyList {
 	class Edge{
 		String destString;
 		int destIndex;
+		
+		Edge(String destString, int destIndex){
+			this.destIndex = destIndex;
+			this.destString = destString;
+		}
 	}
 
 	public AdjacencyList() {
@@ -40,6 +45,9 @@ public class AdjacencyList {
 
 	public boolean addNode(String name) {
 		Vertex temp = new Vertex(name);
+		
+		if(size >= graph.length)
+			resize();
 
 		//Checking if it already exists
 		if(indexOf(name) != -1)
@@ -57,7 +65,7 @@ public class AdjacencyList {
 
 		//Updating the destIndex of the edges
 		for(int i = 0; i < size; i++) {
-			List<Edge> myList = graph[i].edges;
+			ArrayList<Edge> myList = graph[i].edges;
 			for(int j = 0; j < myList.size(); j++) {
 				
 				//If the destIndex was after the pivot index, then increasing the destIndex by 1
@@ -77,16 +85,33 @@ public class AdjacencyList {
 		if(fromIndex == -1 || toIndex == -1)
 			return false;
 
-		List<Edge> toList = graph[toIndex].edges;
-		List<Edge> fromList = graph[fromIndex].edges;
+		ArrayList<Edge> toList = graph[toIndex].edges;
+		ArrayList<Edge> fromList = graph[fromIndex].edges;
 
-		//Add edge to toList, fromList 
-
-		//While adding edges make sure that they are alphabetical using the compareTo method 
+		//Add edge to toList, fromList
+		toList.add(getAdjacencyIndex(toList,fromIndex), new Edge(from,fromIndex));
+		fromList.add(getAdjacencyIndex(fromList,toIndex), new Edge(to,toIndex));
 
 		graph[toIndex].edges = toList;
 		graph[fromIndex].edges = fromList;
 		return true;
+	}
+	
+	public void printgraph() {
+		
+		for(int i = 0; i < size; i++) {
+			String line = graph[i].name;
+			line += " : ";
+			
+			for(int j = 0; j < graph[i].edges.size(); j++) {
+				line += graph[graph[i].edges.get(j).destIndex];
+				line += " -> ";
+			}
+			
+			line = line.substring(0,line.length()-2);
+			System.out.println(line);
+		}
+		
 	}
 
 
@@ -115,12 +140,23 @@ public class AdjacencyList {
 		}
 
 	}
+	
+	private int getAdjacencyIndex(List<Edge> edges, int vertexIndex) {
+		Vertex v = graph[vertexIndex];
+		Vertex temp;
+		for(int i = 0; i < edges.size(); i++) {
+			temp = graph[edges.get(i).destIndex];
+			if(v.compareTo(temp) < 0)
+				return i;
+		}
+		return edges.size();
+	}
 
 	private int findIndexToInsert(Vertex v) {
 		int index = size;
 		
 		//Traversing till we reach the first vertex where it would be alphabetically before 
-		for(int i = 0; i < graph.length; i++) {
+		for(int i = 0; i < size; i++) {
 			if(v.compareTo(graph[i]) < 0) {
 				index = i;
 				break;
