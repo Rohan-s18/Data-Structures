@@ -23,7 +23,7 @@ public class UndirectedGraph{
     }
 
     //Overloaded Constructor
-    public UndirectedGraph(capacity){
+    public UndirectedGraph(int capacity){
         graph = new boolean[capacity][capacity];
         names = new String[capacity];
         size = 0;
