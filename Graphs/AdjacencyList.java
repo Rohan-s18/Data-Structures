@@ -69,7 +69,7 @@ public class AdjacencyList {
 			for(int j = 0; j < myList.size(); j++) {
 				
 				//If the destIndex was after the pivot index, then increasing the destIndex by 1
-				if(myList.get(j).destIndex > index)
+				if(myList.get(j).destIndex >= index)
 					myList.get(j).destIndex++;
 
 			}
@@ -82,11 +82,17 @@ public class AdjacencyList {
 		int fromIndex = indexOf(from);
 		int toIndex = indexOf(to);
 
-		if(fromIndex == -1 || toIndex == -1)
+		if(fromIndex == -1 || toIndex == -1 || toIndex == fromIndex)
 			return false;
 
 		ArrayList<Edge> toList = graph[toIndex].edges;
 		ArrayList<Edge> fromList = graph[fromIndex].edges;
+		
+		//Checking if the edge already exists
+		for(int i = 0; i < toList.size(); i++) {
+			if(toList.get(i).destIndex == fromIndex)
+				return false;
+		}
 
 		//Add edge to toList, fromList
 		toList.add(getAdjacencyIndex(toList,fromIndex), new Edge(from,fromIndex));
@@ -104,11 +110,11 @@ public class AdjacencyList {
 			line += " : ";
 			
 			for(int j = 0; j < graph[i].edges.size(); j++) {
-				line += graph[graph[i].edges.get(j).destIndex];
+				line += graph[graph[i].edges.get(j).destIndex].name;
 				line += " -> ";
 			}
 			
-			line = line.substring(0,line.length()-2);
+			line = line.substring(0,line.length()-3);
 			System.out.println(line);
 		}
 		
