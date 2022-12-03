@@ -3,6 +3,7 @@
 //Author: Rohan Singh
 //Adjacency List implementation of an alphabetically-ordered graph
 
+//DO NOT USE LINKEDLISTS!!!!!!
 import java.util.*;
 
 public class AlphabeticalAdjacencyList {
