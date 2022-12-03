@@ -15,7 +15,15 @@ public class AdjacencyList {
 
 		@Override
 		public int compareTo(AdjacencyList.Vertex o) {
-			//TODO: Check which Vertex comes first alphabetically
+			// -1 if it comes before alphabetically
+			// +1 if it comes after alphabetically
+			for(int i = 0; i < name.length() && i < o.name.length(); i++) {
+				if(name.charAt(i) < o.name.charAt(i))
+					return -1;
+				else if(name.charAt(i) > o.name.charAt(i))
+					return 1;
+			}
+			
 			return 0;
 		}
 	}
@@ -51,8 +59,10 @@ public class AdjacencyList {
 		for(int i = 0; i < size; i++) {
 			List<Edge> myList = graph[i].edges;
 			for(int j = 0; j < myList.size(); j++) {
-
-				//Check if the destINdex > index, then increase destIndex by 1
+				
+				//If the destIndex was after the pivot index, then increasing the destIndex by 1
+				if(myList.get(j).destIndex > index)
+					myList.get(j).destIndex++;
 
 			}
 		}
@@ -94,20 +104,31 @@ public class AdjacencyList {
 		return -1;
 	}
 
-	
-
-	//TODO: Implement the resize method for the graph
 	private void resize() {
-
+		int oldsize = graph.length;
+		Vertex[] oldgraph = graph;
+		graph = new Vertex[2*oldsize];
+		
+		//Refilling the new graph
+		for(int i = 0; i < size; i++) {
+			graph[i] = oldgraph[i];
+		}
 
 	}
 
-	//TODO: Find the index where you need to insert
-
 	private int findIndexToInsert(Vertex v) {
-		return -1;
+		int index = size;
+		
+		//Traversing till we reach the first vertex where it would be alphabetically before 
+		for(int i = 0; i < graph.length; i++) {
+			if(v.compareTo(graph[i]) < 0) {
+				index = i;
+				break;
+			}	
+		}
+		
+		return index;
 	}
 
 }
-
 
