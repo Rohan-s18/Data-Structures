@@ -57,6 +57,10 @@ public class NumLinkedList {
 		reverse();
 		printList();
 	}
+
+	public void noBitches(){
+		System.out.println("No BItches :/ Get fucked");
+	}
 		
 	
 	//Class for Node which will be used in the linked list
