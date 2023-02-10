@@ -10,7 +10,7 @@ These are some of the things that are inside this directory:
   - LinkedList:
     - This contains a single class for a singly-linked list with basic add/remove features as well as O(n) reverse.
   - Stacks and Queues:
-    - Circular Array implementation of Queues
+    - Circular Array implementation of Queues  
     - LinkedList implementation of Queues
     - Array implementation of Stacks
     - LinkedList implementation of Stacks
