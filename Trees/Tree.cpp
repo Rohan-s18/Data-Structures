@@ -36,6 +36,36 @@ class Tree{
     Node *root;
     int num;
 
+    //Helper functions for recrussive traversal
+
+    void preorder_helper(Node* curr){
+        if(curr==NULL)
+            return;
+        std::cout<<curr->key<<" : "<<curr->val<<"\n";
+        preorder_helper(curr->left_child);
+        preorder_helper(curr->right_child);
+    }
+
+
+    void inorder_helper(Node* curr){
+        if(curr==NULL)
+            return;
+        inorder_helper(curr->left_child);
+        std::cout<<curr->key<<" : "<<curr->val<<"\n";
+        inorder_helper(curr->right_child);
+    }
+
+    void postorder_helper(Node* curr){
+        if(curr==NULL)
+            return;
+        postorder_helper(curr->left_child);
+        postorder_helper(curr->right_child);
+        std::cout<<curr->key<<" : "<<curr->val<<"\n";
+    }
+
+
+
+
 
     public:
 
@@ -95,6 +125,96 @@ class Tree{
         return "No Node with that key!";
     }
 
+    //  Inorder traversal method
+    void inorder(){
+        std::cout<<"Inorder Traversal:- \n";
+        std::cout<<"Key : Value\n";
+        inorder_helper(this->root);
+        std::cout<<"\n\n";
+    }
+
+    //  Preorder traversal method
+    void preorder(){
+        std::cout<<"Preorder Traversal:- \n";
+        std::cout<<"Key : Value\n";
+        preorder_helper(this->root);
+        std::cout<<"\n\n";
+    }
+
+    //  Postorder travresal method
+    void postorder(){
+        std::cout<<"Postorder Traversal:- \n";
+        std::cout<<"Key : Value\n";
+        postorder_helper(this->root);
+        std::cout<<"\n\n";
+    }
+
+    //  Remove Method
+    string remove(int x){
+        Node* trav = this->root;
+        string toRemove = "Node doesn't exist!";
+        Node* parent;
+
+        while(trav != NULL){
+            if(x == trav->key){
+                //Deletion Cases
+
+                //Case 1
+                if(trav->left_child == NULL && trav->right_child == NULL){
+                    toRemove = trav->val;
+                    if(parent->left_child->key == x){
+                        parent->left_child = NULL;
+                    } 
+                    else{
+                        parent->right_child = NULL;
+                    }
+                }
+                //Case 2
+                else if(trav->left_child == NULL || trav->right_child == NULL){
+                    toRemove = trav->val;
+                    if(parent->left_child->key == x){
+                        if(trav->left_child != NULL)
+                            parent->left_child = trav->left_child;
+                        else
+                            parent->left_child = trav->right_child;
+                    } 
+                    else{
+                        if(trav->left_child != NULL)
+                            parent->right_child = trav->left_child;
+                        else
+                            parent->right_child = trav->right_child;
+                    }
+                }
+                //Case 3
+                else{
+                    toRemove = trav->val;
+                    Node* replacement = trav;
+                    while(replacement->right_child != NULL){
+                        replacement = replacement->right_child;
+                    }
+                    Node* replacement_copy = replacement;
+                    remove(replacement->key);
+                    if(parent->left_child->key == x){
+                        parent->left_child->key = replacement_copy->key;
+                        parent->left_child->val = replacement_copy->val;
+                    }
+                    else{
+                        parent->right_child->key = replacement_copy->key;
+                        parent->right_child->val = replacement_copy->val;
+                    }
+
+                }
+
+            }
+            else if(x < trav->key)
+                trav = trav->left_child;
+            else
+                trav = trav->right_child;
+            parent = trav;
+        }
+
+        return toRemove;
+    }
 
 
 };
@@ -106,6 +226,7 @@ int main(){
 
     //Add demonstration
     demo->add(6,"F");
+    demo->add(4,"D");
     demo->add(3,"C");
     demo->add(1,"A");
     demo->add(2,"B");
@@ -118,6 +239,17 @@ int main(){
     std::cout<<"Key 8:- "<<demo->search(8)<<"\n";
     std::cout<<"Key 61:- "<<demo->search(61)<<"\n";
 
+    //Traversal Demonstration
+    demo->preorder();
+    demo->postorder();
+    demo->inorder();
+
+    //Remove Demonstration
+    demo->remove(1);
+    demo->remove(7);
+    demo->remove(4);
+
+    demo->inorder();
 
     return 0;
 }
