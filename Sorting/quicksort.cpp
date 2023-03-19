@@ -1,5 +1,5 @@
 //  Author: Rohan Singh
-//  C++ Demonstration fro Sorting algorithms
+//  C++ Demonstration for quicksort algorithm
 
 #include <iostream>
 
