@@ -2,7 +2,7 @@
 ## Author: Rohan Singh
 This repository holds source code for the implementation of most of the Data Structures that are taught in college. It also contains various algorithms and uses of these Data Structures. There are folders for each of the types of Data Strucutures and relevant algorithms, you can check them out if you just want to look at one of them. This repository can also be used for refreshing DSA concepts for technical interviews.  
 
-At the moment most of the source code is in Java, for source code in Python, please check the Python_Src folder.  
+At the moment most of the source code is in Java, for source code in Python, please check the Python_Src folder, additionally there is some source code in C++ that is currently being added to this repository.  
 
 These are some of the things that are inside this directory:  
   - Arrays:
